@@ -9,10 +9,10 @@ class HomeScreen extends React.Component  {
    render() {
     return (
       <View style={styles.container}>
-        <View>
+        <div>
           <Text style={styles.cuidamais}>Cuida</Text>
           <Text style={styles.mais}>+</Text>
-          </View>
+          </div>
       <LogoCuida></LogoCuida>
         <Text  style={styles.text}>As vezes o dom de alguém é cuidar dos outros</Text>
         <NavigationButton screenRoute = 'Register' texto = 'Cadastre-se'></NavigationButton>

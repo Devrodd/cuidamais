@@ -1,93 +1,90 @@
-import React, {useState} from 'react';
-import { Text, View, StyleSheet, TextInput, CheckBox} from 'react-native';
+import React, { useState } from 'react';
+import { View, StyleSheet, Text } from 'react-native';
 import BackButton from '../components/BackButton';
 import CheckboxList from '../components/CheckList';
 import NavigationButton from '../components/NavigateButton';
-import CustomTextInput from '../components/CustomInput';
+import RadioList from '../components/RadioList';
 
 export default function PerfilInformation1() {
-
-const handleCheckboxChange = (checkedItems) => {
+  const handleCheckboxChange = (checkedItems) => {
     console.log('Checked Items:', checkedItems);
-    // Faça o que for necessário com os itens selecionados
+    
   };
 
-  const lista1 = [
+  const lista = [
     'Bebês 0-6 meses',
     'Bebês 6-11 meses',
     'Bebês 1-2 anos',
     'Crianças 3-6 anos',
-    'Crianças ou Bebês sem idade mínima',
-  ];
-
-    const lista2 = [
+    'Crianças ou Bebês\n em qualquer idade',
     'Pets',
     'Idosos',
     'PCDs',
-    'Acompanhante de Hospital',
+    'Acompanhante\n de Hospital',
+    
   ];
 
-  const lista3 = [
-    'Ensino Fundamental',
-    'Ensino Médio',
-    'Ensino Superior',
-    'Prefiro não informar',
-  ];
+  const splitList = (list) => {
+    const halfLength = Math.ceil(list.length / 2);
+    const firstHalf = list.slice(0, halfLength);
+    const secondHalf = list.slice(halfLength);
+    return [firstHalf, secondHalf];
+  };
 
-   return (
+  const [lista1Col1, lista1Col2] = splitList(lista);
+
+  return (
     <View style={styles.container}>
-    <BackButton/>
-        <View style={styles.header}>
-          <p style = {styles.text}>Olá Cuidador!</p>
-          <p style={styles.text}>Essa sessão vai te ajudar na divulgação do seu perfil profissional, aqui te daremos espaço pra falar um pouco mais sobre você.</p>
-        </View>
-        <p style={styles.sobreYou}>Especialidade:</p>
-        <View style={styles.container}>
-        <View style={{flexDirection:'row', justifyContent:'space-between'}}>
-        <CheckboxList values={lista1} onChange={handleCheckboxChange} />
-        <CheckboxList values={lista2} onChange={handleCheckboxChange} />
-        </View>
-        </View>
-         <p style={styles.sobreYou}>Educação:</p>
-         <CheckboxList values={lista3} onChange={handleCheckboxChange} />
+      <BackButton />
+      <View style={styles.header}>
+        <Text style={styles.text}>Olá Cuidador!</Text>
+        <Text style={styles.text}>
+          Essa sessão vai te ajudar na divulgação do seu perfil profissional, aqui te daremos espaço pra falar um
+          pouco mais sobre você.
+        </Text>
+      </View>
+      <Text style={styles.education}>Especialidade:</Text>
+      <View style={styles.checkboxContainer}>
         <View>
+          <CheckboxList values={lista1Col1} onChange={handleCheckboxChange} />
         </View>
-        <NavigationButton texto ='Continuar' screenRoute ='InformationPage2'></NavigationButton>
+        <View>
+          <CheckboxList values={lista1Col2} onChange={handleCheckboxChange} />
+        </View>
+      </View>
+      <Text style={styles.education}>Educação:</Text>
+      <RadioList options={['Ensino Fundamental','Ensino Médio','Ensino Técnico','Ensino Superior']}/>
+      <NavigationButton texto="Continuar" screenRoute="InformationPage2" />
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor:'white',
-    
+    flex: 1,
+    backgroundColor: 'white',
+    paddingHorizontal: 10,
+    paddingVertical: 20,
   },
-  header:{
-    marginLeft:10
+  header: {
+    marginBottom: 20,
   },
-    sobreVoce:{
-    borderRadius:4,
-    width:'80%',
-    height:60,
-    color:"#000000",
-    marginLeft: 20,
-    borderColor:"#D0D5DD",
-    paddingLeft:10,
+  education: {
+    fontSize: 15,
+    fontFamily: 'sans-serif',
+    fontWeight: 'bold',
+    marginTop: 10,
+    marginBottom:5,
+    marginLeft: 10,
   },
-  p:{
-      fontSize: 14,
-      marginLeft:20,
-      fontFamily: 'Inter'
+  text: {
+    marginTop:15,
+    fontFamily: 'sans-serif',
+    color: '#64748B',
+    marginBottom:-10
   },
-  sobreYou:{
-      fontSize: 15,
-      marginLeft:10,
-      fontFamily:'sans-serif',
-      fontWeight: "bold",
-      marginTop: 8
-   },
-  text:{
-    fontFamily:'sans-serif',
-    color: "#64748B"
-  }
+  checkboxContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
 });

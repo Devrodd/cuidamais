@@ -16,6 +16,8 @@ export default function PerfilInformationPage2() {
         </View>
         <p style={styles.sobreYou}>Sobre você:</p>
         <input style={styles.sobreVoce}></input>
+        <p style={styles.sobreYou}>Experiências:</p>
+        <input style={styles.sobreVoce}></input>
         <View style={{padding:10}}>
         <CustomTextInput label ='Site' value ='http://' ></CustomTextInput>
         <CustomTextInput label ='Social'  ></CustomTextInput>

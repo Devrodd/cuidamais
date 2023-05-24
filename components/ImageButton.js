@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { View, TouchableOpacity, ImageBackground, StyleSheet } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
-import iconeCadastro from '../assets/profileIcon.png'
+import iconeCadastro from '../assets/profileIcon.png';
 
 const ImageButton = () => {
   const [backgroundImage, setBackgroundImage] = useState(null);
@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
-    alignItems: 'center',
+    alignItems: 'center'
   },
   buttonBackground: {
     width: 80,
@@ -48,7 +48,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     marginRight:40,
-    marginTop:3
+    marginTop:3,
+    
   },
 });
 

@@ -1,8 +1,6 @@
 import React from 'react';
-import { View } from 'react-native';
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
-
 import HomeScreen from './pages/Home';
 import RegisterScreen from './pages/Register';
 import LoginScreen from './pages/Login';
@@ -36,7 +34,7 @@ const AppNavigator = createStackNavigator(
     },
   },
   {
-    initialRouteName: 'Home',
+    initialRouteName: 'Register',
   }
 );
 
